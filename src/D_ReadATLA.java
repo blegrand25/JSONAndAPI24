@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.spec.RSAOtherPrimeInfo;
 
 public class D_ReadATLA {
 
@@ -22,7 +23,7 @@ public class D_ReadATLA {
 
     public void pull() throws ParseException {
         String output = "";
-        String jsonString="";
+        String jsonString = "";
         try {
 
             URL url = new URL("https://last-airbender-api.fly.dev/api/v1/characters"); /** Your API's URL goes here */
@@ -61,12 +62,42 @@ public class D_ReadATLA {
         System.out.println("JSON ARRAY: " + jsonArray);
 
         /* TODO : print the allies of the first character in the JSON */
+       // JSONObject character = (JSONObject) jsonArray.get(0); // 0 index is the first character
+        //System.out.println("char  " + character);
+       // JSONArray alliesArray = (JSONArray) character.get("allies");
+       // String myID = (String) character.get("_id");
+       // System.out.println("myID " + myID);
         // here is a line to get you started:
-        JSONObject character = (JSONObject) jsonArray.get(0); // 0 index is the first character
+        int c = jsonArray.size();
+        for (int x = 0; x < c; x++) {
+            JSONObject character = (JSONObject) jsonArray.get(x); // 0 index is the first character
+            System.out.println("char  " + character);
+            JSONArray alliesArray = (JSONArray) character.get("allies");
+            String myID = (String) character.get("_id");
+            System.out.println("myID " + myID);
 
-        /* TODO : print the "name" of every character in the jsonArray */
 
+            int n = alliesArray.size();
+            for (int a = 0; a < n; a++) {
+                String allies = (String) alliesArray.get(a);
+                System.out.println(allies);
+            }
+
+
+            /* TODO : print the "name" of every character in the jsonArray */
+            System.out.println("*******1");
+            String myname = (String) character.get("name");
+            System.out.println("name: " + myname);
+/*
+            System.out.println(".....");
+            JSONArray enemiesArray = (JSONArray) character.get("enemies");
+            System.out.println(enemiesArray);
+
+            String photoURL = (String) character.get("photoUrl");
+            System.out.println("photoURL: " + photoURL);
+
+ */
+        }
 
     }
-
 }

@@ -28,7 +28,7 @@ public class C_ReadSWAPI {
         String jsonString="";
         try {
 
-            URL url = new URL("https://swapi.dev/api/people/4/"); /** Your API's URL goes here */
+            URL url = new URL("https://swapi.dev/api/people/5/"); /** Your API's URL goes here */
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
